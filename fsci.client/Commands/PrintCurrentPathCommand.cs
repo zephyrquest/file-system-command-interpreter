@@ -1,4 +1,4 @@
-namespace fsci.client.command;
+namespace fsci.client.Commands;
 
 /**
  * Class representing the command for printing the full filename of the current working directory

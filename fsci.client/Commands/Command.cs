@@ -1,17 +1,22 @@
-namespace fsci.client.command;
+namespace fsci.client.Commands;
 
 public abstract class Command
 {
     private readonly string _acronym;
-    private readonly List<string> _arguments;
+    private string[]? _arguments;
 
-    public List<string> Arguments => _arguments;
+    public string Acronym => _acronym;
 
-    
+    public string[]? Arguments
+    {
+        get => _arguments;
+        set => _arguments = value;
+    }
+
+
     public Command(string acronym)
     {
         _acronym = acronym;
-        _arguments = new List<string>();
     }
 
     public abstract int GetNumberOfArguments();

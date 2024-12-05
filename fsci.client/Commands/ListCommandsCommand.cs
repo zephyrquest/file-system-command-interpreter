@@ -1,11 +1,11 @@
-namespace fsci.client.command;
+namespace fsci.client.Commands;
 
 /**
  * Class representing the command for listing all available commands and their details
  */
-public class HelpCommand : Command
+public class ListCommandsCommand : Command
 {
- public HelpCommand(string acronym) : base(acronym)
+ public ListCommandsCommand(string acronym) : base(acronym)
  {
  }
 

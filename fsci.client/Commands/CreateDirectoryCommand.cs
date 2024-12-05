@@ -1,4 +1,4 @@
-namespace fsci.client.command;
+namespace fsci.client.Commands;
 
 /**
  * Class representing the command for creating a directory inside the current working directory
@@ -26,6 +26,6 @@ public class CreateDirectoryCommand : Command, IOutputMessage
 
  public override string GetSyntaxErrorMessage(string userInput)
  {
-  return $"{userInput}: syntax error (usage: mkdir <dir name>.";
+  return $"{userInput}: syntax error (usage: mkdir <dir name>).";
  }
 }

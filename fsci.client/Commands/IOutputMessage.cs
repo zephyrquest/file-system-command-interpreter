@@ -1,4 +1,4 @@
-namespace fsci.client.command;
+namespace fsci.client.Commands;
 
 public interface IOutputMessage
 {
