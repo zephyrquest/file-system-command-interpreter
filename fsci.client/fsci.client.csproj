@@ -96,8 +96,4 @@
       <EmbeddedResource Include="Resources\available_commands.ini" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Models\" />
-    </ItemGroup>
-
 </Project>

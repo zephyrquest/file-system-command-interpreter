@@ -1,4 +1,4 @@
-using fsci.client.Commands;
+using fsci.client.Models;
 using fsci.client.view;
 
 namespace fsci.client.Controllers;
@@ -39,14 +39,14 @@ public class CommandController
         {
             var command = _commandManager.CreateCommand(commandAcronym);
                 
-            if (arguments.Length == command.GetNumberOfArguments())
+            /*if (arguments.Length == command.getGetNumberOfArguments())
             {
                 command.Arguments = arguments;
             }
             else
             {
                 
-            }
+            }*/
         }
         else
         {

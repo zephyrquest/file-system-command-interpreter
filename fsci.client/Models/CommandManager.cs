@@ -1,7 +1,7 @@
 using System.Reflection;
 using fsci.client.Utilities;
 
-namespace fsci.client.Commands;
+namespace fsci.client.Models;
 
 public class CommandManager
 {
