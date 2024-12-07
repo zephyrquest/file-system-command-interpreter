@@ -6,12 +6,25 @@ using System.Threading.Tasks;
 
 namespace fsci.client.view;
 
-public partial class OutputAreaView : ContentView
+public partial class OutputAreaView : ContentView, IOutputView
 {
     public OutputAreaView()
     {
         InitializeComponent();
     }
     
-    public Editor OutputArea => OutputTextArea;
+    public void SetOutput(string output)
+    {
+        OutputTextArea.Text = output;
+    }
+
+    public void AppendOutput(string output)
+    {
+        OutputTextArea.Text += output;
+    }
+
+    public void ClearOutput()
+    {
+        OutputTextArea.Text = string.Empty;
+    }
 }

@@ -1,26 +1,43 @@
+using fsci.client.Models;
+
 namespace fsci.client.Commands;
 
 /**
  * Class representing the command for listing all available commands and their details
  */
-public class ListCommandsCommand : Command
+public class ListCommandsCommand : Command, IOperateOnView, IOperationSuccessOutputMessage
 {
+ private IOutputHandler? _outputHandler;
+ 
  public ListCommandsCommand(string acronym) : base(acronym)
  {
  }
 
- public override int GetNumberOfArguments()
+ public override void Execute()
  {
-  return 0;
+  if (_outputHandler == null)
+  {
+   throw new InvalidOperationException("Output Handler has not been set");
+  }
  }
 
- public override void Execute()
+ public override string GetSynopsis()
+ {
+  return "help";
+ }
+
+ public override string GetDescription()
+ {
+  return "list all commands available with their description and synopsis";
+ }
+
+ public string GetOperationSuccessMessage()
  {
   throw new NotImplementedException();
  }
 
- public override string GetSyntaxErrorMessage(string userInput)
+ public void SetOutputHandler(IOutputHandler outputHandler)
  {
-  return $"{userInput}: syntax error (usage: help).";
+  _outputHandler = outputHandler;
  }
 }

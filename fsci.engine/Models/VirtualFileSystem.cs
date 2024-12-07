@@ -4,25 +4,14 @@ namespace fsci.engine.Models;
 
 public class VirtualFileSystem : IFileSystem
 {
-    private static VirtualFileSystem? _instance;
-    
     private readonly Directory _root;
     private Directory _current;
 
-    private VirtualFileSystem()
+    
+    public VirtualFileSystem()
     {
         _root = new Directory(GetSeparator(), null);
         _current = _root;
-    }
-    
-    public static VirtualFileSystem GetInstance()
-    {
-        if (_instance == null)
-        {
-            _instance = new VirtualFileSystem();
-        }
-
-        return _instance;
     }
 
     public string GetSeparator()

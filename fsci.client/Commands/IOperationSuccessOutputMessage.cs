@@ -1,6 +1,6 @@
 namespace fsci.client.Commands;
 
-public interface IOutputMessage
+public interface IOperationSuccessOutputMessage
 {
     string GetOperationSuccessMessage();
 }

@@ -1,72 +1,147 @@
+using fsci.client.Commands;
 using fsci.client.Models;
 using fsci.client.view;
+using Command = fsci.client.Commands.Command;
 
 namespace fsci.client.Controllers;
 
 public class CommandController
 {
-    private readonly CommandInputView _commandInputView;
-    private readonly OutputAreaView _outputAreaView;
+    private readonly IInputView _inputView;
+    private readonly IOutputView _outputView;
+
+    private readonly IOutputHandler _outputHandler;
 
     private readonly CommandManager _commandManager;
 
-
-    public CommandController(CommandInputView commandInputView, OutputAreaView outputAreaView,
+    
+    public CommandController(IInputView inputView, IOutputView outputView, 
+        IOutputHandler outputHandler,
         CommandManager commandManager)
     {
-        _commandInputView = commandInputView;
-        _outputAreaView = outputAreaView;
-        _commandManager = commandManager;
+        _inputView = inputView;
+        _outputView = outputView;
 
-        _commandInputView.InputField.Completed += OnCommandEntered;
+        _outputHandler = outputHandler;
+
+        _commandManager = commandManager;
+        
+        _inputView.SetEventListener(HandleInput);
+        _outputHandler.StateChanged += UpdateOutputView;
     }
 
-    private void OnCommandEntered(object? sender, EventArgs e)
+    private void HandleInput(string input)
     {
-        string commandInput = _commandInputView.InputField.Text;
-
-        if (string.IsNullOrEmpty(commandInput))
+        try
         {
-            return;
-        }
-        
-        var inputCommandParts = SplitCommandInput(commandInput);
+            string commandInput = _inputView.RetrieveInput();
 
-        var commandAcronym = GetCommandAcronym(inputCommandParts);
-        var arguments = GetCommandArguments(inputCommandParts);
-
-        if (_commandManager.IsCommandValid(commandAcronym))
-        {
-            var command = _commandManager.CreateCommand(commandAcronym);
-                
-            /*if (arguments.Length == command.getGetNumberOfArguments())
+            if (string.IsNullOrEmpty(commandInput))
             {
-                command.Arguments = arguments;
+                return;
+            }
+
+            commandInput = commandInput.Trim();
+
+            var inputCommandParts = SplitCommandInput(commandInput);
+
+            var commandAcronym = GetCommandAcronym(inputCommandParts);
+            var arguments = GetCommandParameters(inputCommandParts);
+            
+            var command = _commandManager.CreateCommand(commandAcronym, arguments);
+
+            if (command != null)
+            {
+                command.Execute();
+            }
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Error during parsing of the command", ex);
+        }
+        finally
+        {
+            _inputView.ClearInput();
+        }
+
+        /*try
+        {
+            string commandInput = _inputView.RetrieveInput();
+
+            if (string.IsNullOrEmpty(commandInput))
+            {
+                return;
+            }
+
+            commandInput = commandInput.Trim();
+
+            var inputCommandParts = SplitCommandInput(commandInput);
+
+            var commandAcronym = GetCommandAcronym(inputCommandParts);
+            var arguments = GetCommandArguments(inputCommandParts);
+
+            if (ValidateCommandExistence(commandAcronym))
+            {
+                var command = _commandManager.CreateCommand(commandAcronym);
+
+                if (ValidateCommandSyntax(command, arguments))
+                {
+                    command.Arguments = arguments;
+
+                    command.Execute();
+                }
+                else
+                {
+                    _outputHandler.AddSyntaxErrorMessage(command, commandInput);
+                }
             }
             else
             {
-                
-            }*/
+                _outputHandler.AddCommandNotFoundMessage(commandAcronym);
+            }
         }
-        else
+        catch (Exception ex)
         {
-            
+            throw new Exception("Error during parsing of the command", ex);
         }
+        finally
+        {
+            _inputView.ClearInput();
+        }*/
     }
 
+    private void UpdateOutputView(string output)
+    {
+        _outputView.SetOutput(output);
+    }
+    
     private string[] SplitCommandInput(string input)
     {
-        input = input.Trim();
         return input.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
     }
 
     private string GetCommandAcronym(string[] input)
     {
+        if (input.Length == 0)
+        {
+            throw new ArgumentException("No command specified");
+        }
+        
         return input[0];
     }
 
-    private string[] GetCommandArguments(string[] input)
+    private string[] GetCommandParameters(string[] input)
     {
         return input.Length > 1 ? input[1..] : Array.Empty<string>();
     }
+    
+    /*private bool ValidateCommandExistence(string commandAcronym)
+    {
+        return _commandManager.IsCommandAcronymValid(commandAcronym);
+    }
+
+    private bool ValidateCommandSyntax(Command command, string[] parameters)
+    {
+        return parameters.Length == command.GetNumberOfArguments();
+    }*/
 }
