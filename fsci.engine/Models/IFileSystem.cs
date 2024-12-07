@@ -6,6 +6,7 @@ public interface IFileSystem
     string PrintCurrentPath();
     Directory? CreateDirectory(string name);
     List<FileSystemElement> ListContent();
-    Directory? ChangeCurrentDirectory(string path);
-    Directory? RemoveDirectory(string path);
+    string? ChangeCurrentDirectory(string path);
+    string? RemoveDirectory(string path);
+    (string Origin, string Destination)? MoveDirectory(string originPath, string destinationPath);
 }

@@ -10,6 +10,7 @@ public class PrintCurrentPathCommand : Command, IOperateOnFileSystem, IOperateOn
  private IFileSystemHandler? _fileSystemHandler;
  private IOutputHandler? _outputHandler;
 
+ // output
  private string _currentPath;
  
  public PrintCurrentPathCommand(string acronym) : base(acronym)
@@ -25,7 +26,7 @@ public class PrintCurrentPathCommand : Command, IOperateOnFileSystem, IOperateOn
 
   if (_outputHandler == null)
   {
-   throw new InvalidOperationException("Output Handler has not been set");
+   throw new InvalidOperationException("Output Handler has not been set.");
   }
 
   _currentPath = _fileSystemHandler.PrintCurrentPath();

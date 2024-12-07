@@ -17,7 +17,7 @@ public class ClearOutputCommand : Command, IOperateOnView
  {
   if (_outputHandler == null)
   {
-   throw new InvalidOperationException("Output Handler has not been set");
+   throw new InvalidOperationException("Output Handler has not been set.");
   }
   
   _outputHandler.ClearOutput();

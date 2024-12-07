@@ -10,6 +10,7 @@ public class ListAvailableCommandsCommand : Command, IOperateOnView, IOperationS
 {
  private IOutputHandler? _outputHandler;
 
+ // output
  private List<Command> _commands;
  
  public ListAvailableCommandsCommand(string acronym) : base(acronym)
@@ -20,7 +21,7 @@ public class ListAvailableCommandsCommand : Command, IOperateOnView, IOperationS
  {
   if (_outputHandler == null)
   {
-   throw new InvalidOperationException("Output Handler has not been set");
+   throw new InvalidOperationException("Output Handler has not been set.");
   }
   
   _commands = _outputHandler.ListAvailableCommands();
@@ -46,7 +47,7 @@ public class ListAvailableCommandsCommand : Command, IOperateOnView, IOperationS
   {
    stringBuilder
     .Append(command.Acronym)
-    .Append($" ({command.GetDescription()}) ")
+    .Append($" ({command.GetDescription()}): ")
     .Append(command.GetSynopsis())
     .Append("\n");
   }

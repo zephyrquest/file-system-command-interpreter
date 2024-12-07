@@ -28,4 +28,19 @@ public class FileSystemHandler : IFileSystemHandler
     {
         return _fileSystem.ListContent();
     }
+
+    public string? ChangeCurrentDirectory(string path)
+    {
+        return _fileSystem.ChangeCurrentDirectory(path);
+    }
+
+    public string? RemoveDirectory(string path)
+    {
+        return _fileSystem.RemoveDirectory(path);
+    }
+
+    public (string Origin, string Destination)? MoveDirectory(string originPath, string destinationPath)
+    {
+        return _fileSystem.MoveDirectory(originPath, destinationPath);
+    }
 }

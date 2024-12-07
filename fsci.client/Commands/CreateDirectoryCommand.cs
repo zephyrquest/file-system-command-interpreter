@@ -11,6 +11,7 @@ public class CreateDirectoryCommand : Command, IParameterCommand, IOperateOnFile
  private IFileSystemHandler? _fileSystemHandler;
  private IOutputHandler? _outputHandler;
 
+ // input and output
  private string _directoryName;
  
 
@@ -27,7 +28,7 @@ public class CreateDirectoryCommand : Command, IParameterCommand, IOperateOnFile
 
   if (_outputHandler == null)
   {
-   throw new InvalidOperationException("Output Handler has not been set");
+   throw new InvalidOperationException("Output Handler has not been set.");
   }
   
   var directory = _fileSystemHandler.CreateDirectory(_directoryName);

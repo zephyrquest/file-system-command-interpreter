@@ -12,6 +12,7 @@ public class ListContentCommand : Command, IOperateOnFileSystem, IOperateOnView,
     private IFileSystemHandler? _fileSystemHandler;
     private IOutputHandler? _outputHandler;
 
+    // output
     private List<FileSystemElement> _fileSystemElements;
     
     
@@ -28,7 +29,7 @@ public class ListContentCommand : Command, IOperateOnFileSystem, IOperateOnView,
 
         if (_outputHandler == null)
         {
-            throw new InvalidOperationException("Output Handler has not been set");
+            throw new InvalidOperationException("Output Handler has not been set.");
         }
 
         _fileSystemElements = _fileSystemHandler.ListContent();
