@@ -3,13 +3,13 @@ using fsci.client.Models;
 namespace fsci.client.Commands;
 
 /**
- * Class representing the command for listing all available commands and their details
+ * Class representing the command for clearing the output view
  */
-public class ListCommandsCommand : Command, IOperateOnView, IOperationSuccessOutputMessage
+public class ClearOutputCommand : Command, IOperateOnView
 {
  private IOutputHandler? _outputHandler;
  
- public ListCommandsCommand(string acronym) : base(acronym)
+ public ClearOutputCommand(string acronym) : base(acronym)
  {
  }
 
@@ -19,21 +19,18 @@ public class ListCommandsCommand : Command, IOperateOnView, IOperationSuccessOut
   {
    throw new InvalidOperationException("Output Handler has not been set");
   }
+  
+  _outputHandler.ClearOutput();
  }
 
  public override string GetSynopsis()
  {
-  return "help";
+  return "clear";
  }
 
  public override string GetDescription()
  {
-  return "list all commands available with their description and synopsis";
- }
-
- public string GetOperationSuccessMessage()
- {
-  throw new NotImplementedException();
+  return "clear the output area";
  }
 
  public void SetOutputHandler(IOutputHandler outputHandler)

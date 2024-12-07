@@ -1,3 +1,4 @@
+using System.Reflection;
 using fsci.client.Commands;
 using Command = fsci.client.Commands.Command;
 
@@ -18,9 +19,32 @@ public class OutputHandler : IOutputHandler
         NotifyStateChange();
     }
 
-    public void ListAvailableCommands()
+    public List<Command> ListAvailableCommands()
     {
-        throw new NotImplementedException();
+        var commands = new List<Command>();
+        
+        foreach (var availableCommand in CommandManager.AvailableCommands)
+        {
+            var commandClass = availableCommand.Value;
+            var assembly = Assembly.GetExecutingAssembly();
+            var type = assembly.GetType(commandClass);
+            
+            if (type == null)
+            {
+                throw new TypeLoadException($"Type '{commandClass}' could not be found in the assembly.");
+            }
+            
+            var instance = Activator.CreateInstance(type, availableCommand.Key);
+
+            if (instance is not Command commandInstance)
+            {
+                throw new InvalidOperationException($"The type '{commandClass}' is not a valid Command.");
+            }
+            
+            commands.Add(commandInstance);
+        }
+
+        return commands;
     }
 
     public void AddSuccessOperationMessage(IOperationSuccessOutputMessage command)

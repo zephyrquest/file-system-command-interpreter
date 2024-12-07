@@ -6,9 +6,10 @@ namespace fsci.client.Commands;
 
 public class CommandManager
 {
+    public static Dictionary<string, string> AvailableCommands = new();
+    
     private readonly string _fileName = "available_commands.ini";
     private readonly IniFileReader _iniFileReader = new();
-    private readonly Dictionary<string, string> _availableCommands;
 
     private readonly IFileSystemHandler _fileSystemHandler;
     private readonly IOutputHandler _outputHandler;
@@ -19,7 +20,7 @@ public class CommandManager
         _fileSystemHandler = fileSystemHandler;
         _outputHandler = outputHandler;
         
-        _availableCommands = _iniFileReader.ReadFile(_fileName);
+        AvailableCommands = _iniFileReader.ReadFile(_fileName);
     }
 
     public Command? CreateCommand(string acronym, string[] parameters)
@@ -37,7 +38,7 @@ public class CommandManager
 
         try
         {
-            var commandClass = _availableCommands[acronym];
+            var commandClass = AvailableCommands[acronym];
             var assembly = Assembly.GetExecutingAssembly();
             var type = assembly.GetType(commandClass);
 
@@ -65,6 +66,11 @@ public class CommandManager
                     return null;
                 }
             }
+            else if (parameters.Length > 0)
+            {
+                _outputHandler.AddSyntaxErrorMessage(commandInstance);
+                return null;
+            }
 
             if (commandInstance is IOperateOnFileSystem)
             {
@@ -87,6 +93,6 @@ public class CommandManager
     
     private bool IsCommandAcronymValid(string acronym)
     {
-        return _availableCommands.ContainsKey(acronym);
+        return AvailableCommands.ContainsKey(acronym);
     }
 }

@@ -23,4 +23,9 @@ public class FileSystemHandler : IFileSystemHandler
     {
         return _fileSystem.PrintCurrentPath();
     }
+
+    public List<FileSystemElement> ListContent()
+    {
+        return _fileSystem.ListContent();
+    }
 }

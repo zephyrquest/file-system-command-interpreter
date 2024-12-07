@@ -8,7 +8,7 @@ public interface IOutputHandler
     event Action<string> StateChanged;
 
     void ClearOutput();
-    void ListAvailableCommands();
+    List<Command> ListAvailableCommands();
     void AddSuccessOperationMessage(IOperationSuccessOutputMessage command);
     void AddUnSuccessOperationMessage(IOperationUnSuccessOutputMessage command);
     void AddSyntaxErrorMessage(Command command);
