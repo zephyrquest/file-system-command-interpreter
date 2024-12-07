@@ -12,12 +12,7 @@ public class CreateDirectoryCommand : Command, IParameterCommand, IOperateOnFile
  private IOutputHandler? _outputHandler;
 
  private string _directoryName;
-
- public string DirectoryName
- {
-  get => _directoryName;
-  set => _directoryName = value ?? throw new ArgumentNullException(nameof(value));
- }
+ 
 
  public CreateDirectoryCommand(string acronym) : base(acronym)
  {

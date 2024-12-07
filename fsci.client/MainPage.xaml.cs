@@ -21,9 +21,6 @@ public partial class MainPage : ContentPage
         InitializeComponent();
 
         _commandManager = new CommandManager(_fileSystemHandler, _outputHandler);
-        
-        //_commandController = new CommandController(CommandInputView, OutputAreaView, _commandManager, 
-        //    _inputHandler, _outputHandler);
 
         _commandController = new CommandController(CommandInputView, OutputAreaView, 
             _outputHandler, 

@@ -1,7 +1,6 @@
 using fsci.client.Commands;
 using fsci.client.Models;
 using fsci.client.view;
-using Command = fsci.client.Commands.Command;
 
 namespace fsci.client.Controllers;
 
@@ -63,51 +62,6 @@ public class CommandController
         {
             _inputView.ClearInput();
         }
-
-        /*try
-        {
-            string commandInput = _inputView.RetrieveInput();
-
-            if (string.IsNullOrEmpty(commandInput))
-            {
-                return;
-            }
-
-            commandInput = commandInput.Trim();
-
-            var inputCommandParts = SplitCommandInput(commandInput);
-
-            var commandAcronym = GetCommandAcronym(inputCommandParts);
-            var arguments = GetCommandArguments(inputCommandParts);
-
-            if (ValidateCommandExistence(commandAcronym))
-            {
-                var command = _commandManager.CreateCommand(commandAcronym);
-
-                if (ValidateCommandSyntax(command, arguments))
-                {
-                    command.Arguments = arguments;
-
-                    command.Execute();
-                }
-                else
-                {
-                    _outputHandler.AddSyntaxErrorMessage(command, commandInput);
-                }
-            }
-            else
-            {
-                _outputHandler.AddCommandNotFoundMessage(commandAcronym);
-            }
-        }
-        catch (Exception ex)
-        {
-            throw new Exception("Error during parsing of the command", ex);
-        }
-        finally
-        {
-            _inputView.ClearInput();
-        }*/
     }
 
     private void UpdateOutputView(string output)
@@ -134,14 +88,4 @@ public class CommandController
     {
         return input.Length > 1 ? input[1..] : Array.Empty<string>();
     }
-    
-    /*private bool ValidateCommandExistence(string commandAcronym)
-    {
-        return _commandManager.IsCommandAcronymValid(commandAcronym);
-    }
-
-    private bool ValidateCommandSyntax(Command command, string[] parameters)
-    {
-        return parameters.Length == command.GetNumberOfArguments();
-    }*/
 }

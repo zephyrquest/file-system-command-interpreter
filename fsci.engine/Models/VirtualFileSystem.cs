@@ -43,6 +43,11 @@ public class VirtualFileSystem : IFileSystem
 
     public Directory? CreateDirectory(string name)
     {
+        if (name == GetSeparator())
+        {
+            return null;
+        }
+        
         var currentDirectoryChildren = _current.Children.FindAll(e => e is Directory);
 
         if (currentDirectoryChildren.Find(directory => directory.Name == name) != null)
@@ -52,7 +57,7 @@ public class VirtualFileSystem : IFileSystem
 
         var newDirectory = new Directory(name, _current);
 
-        _current.Children.Append(newDirectory);
+        _current.Children.Add(newDirectory);
 
         return newDirectory;
     }

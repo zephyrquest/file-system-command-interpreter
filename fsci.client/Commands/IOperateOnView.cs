@@ -1,5 +1,4 @@
 using fsci.client.Models;
-using fsci.client.view;
 
 namespace fsci.client.Commands;
 
