@@ -9,11 +9,9 @@ public partial class MainPage : ContentPage
     private readonly IOutputHandler _outputHandler = new OutputHandler();
     private readonly IFileSystemHandler _fileSystemHandler = new FileSystemHandler();
     
-    
     private readonly CommandManager _commandManager;
     
     private readonly CommandController _commandController;
-    
     
     
     public MainPage()

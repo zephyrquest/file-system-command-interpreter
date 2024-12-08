@@ -45,22 +45,22 @@ public class CreateDirectoryCommand : Command, IParameterCommand, IOperateOnFile
 
  public override string GetSynopsis()
  {
-  return "mkdir <dir name>";
+  return LocalizationHandler.GetInstance().GetValue("command.mkdir.synopsis");
  }
 
  public override string GetDescription()
  {
-  return "create a new directory in the current working directory";
+  return LocalizationHandler.GetInstance().GetValue("command.mkdir.description");
  }
 
  public string GetOperationSuccessMessage()
  {
-  return $"new directory created: {_directoryName}";
+  return string.Format(LocalizationHandler.GetInstance().GetValue("command.mkdir.success"), _directoryName);
  }
 
  public string GetOperationUnSuccessMessage()
  {
-  return $"Operation failed: could not create directory with name {_directoryName}";
+  return string.Format(LocalizationHandler.GetInstance().GetValue("command.mkdir.unsuccess"), _directoryName);
  }
 
  public void SetFileSystemHandler(IFileSystemHandler fileSystemHandler)

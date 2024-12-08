@@ -43,12 +43,12 @@ public class ChangeCurrentDirectoryCommand : Command, IParameterCommand, IOperat
 
     public override string GetSynopsis()
     {
-        return "cd <path>";
+        return LocalizationHandler.GetInstance().GetValue("command.cd.synopsis");
     }
 
     public override string GetDescription()
     {
-        return "change the current working directory";
+        return LocalizationHandler.GetInstance().GetValue("command.cd.description");
     }
 
     public int GetNumberOfParameters()
@@ -73,11 +73,12 @@ public class ChangeCurrentDirectoryCommand : Command, IParameterCommand, IOperat
 
     public string GetOperationSuccessMessage()
     {
-        return $"change current working directory to: {_directoryAbsolutePath}";
+        return string.Format(LocalizationHandler.GetInstance().GetValue("command.cd.success"), _directoryAbsolutePath);
     }
 
     public string GetOperationUnSuccessMessage()
     {
-        return $"Operation failed: could not change current working directory to {_path}";
+        return string.Format(LocalizationHandler.GetInstance().GetValue("command.cd.unsuccess"), _path);
+
     }
 }

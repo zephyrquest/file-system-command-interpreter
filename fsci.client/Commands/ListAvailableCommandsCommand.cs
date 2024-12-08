@@ -31,12 +31,12 @@ public class ListAvailableCommandsCommand : Command, IOperateOnView, IOperationS
 
  public override string GetSynopsis()
  {
-  return "help";
+  return LocalizationHandler.GetInstance().GetValue("command.help.synopsis");
  }
 
  public override string GetDescription()
  {
-  return "list all commands available with their description and synopsis";
+  return LocalizationHandler.GetInstance().GetValue("command.help.description");
  }
 
  public string GetOperationSuccessMessage()

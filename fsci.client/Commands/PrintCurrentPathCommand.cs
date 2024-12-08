@@ -36,17 +36,17 @@ public class PrintCurrentPathCommand : Command, IOperateOnFileSystem, IOperateOn
 
  public override string GetSynopsis()
  {
-  return "pwd";
+  return LocalizationHandler.GetInstance().GetValue("command.pwd.synopsis");
  }
 
  public override string GetDescription()
  {
-  return "print the path of the current working directory";
+  return LocalizationHandler.GetInstance().GetValue("command.pwd.description");
  }
 
  public string GetOperationSuccessMessage()
  {
-  return $"current working dir: {_currentPath}";
+  return string.Format(LocalizationHandler.GetInstance().GetValue("command.pwd.success"), _currentPath);
  }
 
  public void SetFileSystemHandler(IFileSystemHandler fileSystemHandler)

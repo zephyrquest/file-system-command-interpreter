@@ -39,12 +39,12 @@ public class ListContentCommand : Command, IOperateOnFileSystem, IOperateOnView,
 
     public override string GetSynopsis()
     {
-        return "ls";
+        return LocalizationHandler.GetInstance().GetValue("command.ls.synopsis");
     }
 
     public override string GetDescription()
     {
-        return "list the content inside the current working directory";
+        return LocalizationHandler.GetInstance().GetValue("command.ls.description");
     }
 
     public void SetFileSystemHandler(IFileSystemHandler fileSystemHandler)

@@ -25,12 +25,12 @@ public class ClearOutputCommand : Command, IOperateOnView
 
  public override string GetSynopsis()
  {
-  return "clear";
+  return LocalizationHandler.GetInstance().GetValue("command.clear.synopsis");
  }
 
  public override string GetDescription()
  {
-  return "clear the output area";
+  return LocalizationHandler.GetInstance().GetValue("command.clear.description");
  }
 
  public void SetOutputHandler(IOutputHandler outputHandler)

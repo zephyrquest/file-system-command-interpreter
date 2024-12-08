@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+            
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="command.cd.description" xml:space="preserve">
+        <value>cambia la cartella di lavoro corrente</value>
+    </data>
+    <data name="command.cd.success" xml:space="preserve">
+        <value>nuova cartella di lavoro cambiata a: {0}</value>
+    </data>
+    <data name="command.cd.synopsis" xml:space="preserve">
+        <value>cd &lt;percorso&gt;</value>
+    </data>
+    <data name="command.cd.unsuccess" xml:space="preserve">
+        <value>operazione fallita: non è stato possibile cambiare la cartella di lavoro corrente a {0}</value>
+    </data>
+    <data name="command.clear.description" xml:space="preserve">
+        <value>pulisce l'area di output</value>
+    </data>
+    <data name="command.clear.synopsis" xml:space="preserve">
+        <value>clear</value>
+    </data>
+    <data name="command.ls.description" xml:space="preserve">
+        <value>lista il contenuto della cartella di lavoro corrente</value>
+    </data>
+    <data name="command.ls.synopsis" xml:space="preserve">
+        <value>ls</value>
+    </data>
+    <data name="command.mkdir.description" xml:space="preserve">
+        <value>crea una nuova cartella nella cartella di lavoro corrente</value>
+    </data>
+    <data name="command.mkdir.success" xml:space="preserve">
+        <value>nuova cartella creata: {0}</value>
+    </data>
+    <data name="command.mkdir.synopsis" xml:space="preserve">
+        <value>mkdir &lt;nome cartella&gt;</value>
+    </data>
+    <data name="command.mkdir.unsuccess" xml:space="preserve">
+        <value>operazione fallita: non è stato possibile create la cartella con nome {0}</value>
+    </data>
+    <data name="command.mv.description" xml:space="preserve">
+        <value>sposta una cartella ed il suo contenuto in un'altra cartella</value>
+    </data>
+    <data name="command.mv.success" xml:space="preserve">
+        <value>spostata la cartella {0} in {1}</value>
+    </data>
+    <data name="command.mv.synopsis" xml:space="preserve">
+        <value>mv &lt;origine&gt; &lt;destinazione&gt;</value>
+    </data>
+    <data name="command.mv.unsuccess" xml:space="preserve">
+        <value>operazione fallita: non è stato possibile spostare la cartella {0} in {1}</value>
+    </data>
+    <data name="command.pwd.description" xml:space="preserve">
+        <value>stampa il percorso della cartella di lavoro corrente</value>
+    </data>
+    <data name="command.pwd.success" xml:space="preserve">
+        <value>cartella di lavoro corrente: {0}</value>
+    </data>
+    <data name="command.pwd.synopsis" xml:space="preserve">
+        <value>pwd</value>
+    </data>
+    <data name="command.rm.description" xml:space="preserve">
+        <value>elimina una cartella ed il suo contenuto</value>
+    </data>
+    <data name="command.rm.success" xml:space="preserve">
+        <value>cartella {0} eliminata</value>
+    </data>
+    <data name="command.rm.synopsis" xml:space="preserve">
+        <value>rm &lt;percorso&gt;</value>
+    </data>
+    <data name="command.rm.unsuccess" xml:space="preserve">
+        <value>operazione fallita: non è stato possibile eliminare la cartella al percorso {0}</value>
+    </data>
+    <data name="ui.command" xml:space="preserve">
+        <value>comando</value>
+    </data>
+    <data name="ui.title" xml:space="preserve">
+        <value>Interprete di Comandi di File System</value>
+    </data>
+    <data name="command.notfound" xml:space="preserve">
+        <value>{0}: comando non trovato</value>
+    </data>
+    <data name="command.syntaxerror" xml:space="preserve">
+        <value>{0}: errore di sintassi (utilizzo {1})</value>
+    </data>
+    <data name="command.help.description" xml:space="preserve">
+        <value>lista i comandi disponibili con la loro descrizione e sinossi</value>
+    </data>
+    <data name="command.help.synopsis" xml:space="preserve">
+        <value>help</value>
+    </data>
+</root>

@@ -50,12 +50,12 @@ public class MoveDirectoryCommand : Command, IParameterCommand, IOperateOnFileSy
 
     public override string GetSynopsis()
     {
-        return "mv <origin> <path>";
+        return LocalizationHandler.GetInstance().GetValue("command.mv.synopsis");
     }
 
     public override string GetDescription()
     {
-        return "move a directory and its content inside another directory";
+        return LocalizationHandler.GetInstance().GetValue("command.mv.description");
     }
 
     public int GetNumberOfParameters()
@@ -81,11 +81,13 @@ public class MoveDirectoryCommand : Command, IParameterCommand, IOperateOnFileSy
 
     public string GetOperationSuccessMessage()
     {
-        return $"moved directory {_originAbsolutePath} to {_destinationAbsolutePath}";
+        return string.Format(LocalizationHandler.GetInstance()
+            .GetValue("command.mv.success"), _originAbsolutePath, _destinationAbsolutePath);
     }
 
     public string GetOperationUnSuccessMessage()
     {
-        return $"Operation failed: could not move directory {_originPath} to {_destinationPath}";
+       return string.Format(LocalizationHandler.GetInstance().GetValue("command.mv.unsuccess"), _originPath,
+           _destinationPath);
     }
 }

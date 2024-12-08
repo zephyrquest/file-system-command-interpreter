@@ -63,14 +63,15 @@ public class OutputHandler : IOutputHandler
     
     public void AddSyntaxErrorMessage(Command command)
     {
-        _output += $"{command.Acronym}: syntax error (usage {command.GetSynopsis()}).\n";
+        _output += string.Format(LocalizationHandler.GetInstance().GetValue("command.syntaxerror"), 
+            command.Acronym, command.GetSynopsis()) + "\n";
         
         NotifyStateChange();
     }
 
     public void AddCommandNotFoundMessage(string acronym)
     {
-        _output += $"{acronym}: command not found.\n";
+        _output += string.Format(LocalizationHandler.GetInstance().GetValue("command.notfound"), acronym) + "\n";
         
         NotifyStateChange();
     }

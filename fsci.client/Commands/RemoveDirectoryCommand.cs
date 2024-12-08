@@ -43,12 +43,12 @@ public class RemoveDirectoryCommand : Command, IParameterCommand, IOperateOnFile
 
     public override string GetSynopsis()
     {
-        return "rm <path>";
+        return LocalizationHandler.GetInstance().GetValue("command.rm.synopsis");
     }
 
     public override string GetDescription()
     {
-        return "remove a directory and its content";
+        return LocalizationHandler.GetInstance().GetValue("command.rm.description");
     }
 
     public int GetNumberOfParameters()
@@ -73,11 +73,11 @@ public class RemoveDirectoryCommand : Command, IParameterCommand, IOperateOnFile
 
     public string GetOperationSuccessMessage()
     {
-        return $"removed directory: {_absoluteDirectoryPath}";
+        return string.Format(LocalizationHandler.GetInstance().GetValue("command.rm.success"), _absoluteDirectoryPath);
     }
 
     public string GetOperationUnSuccessMessage()
     {
-        return $"Operation failed: could not remove directory with path {_path}";
+        return string.Format(LocalizationHandler.GetInstance().GetValue("command.rm.unsuccess"), _path);
     }
 }
