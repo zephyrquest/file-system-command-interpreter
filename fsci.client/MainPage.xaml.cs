@@ -6,6 +6,8 @@ namespace fsci.client;
 
 public partial class MainPage : ContentPage
 {
+    private readonly IConfigurationHandler _configurationHandler = new ConfigurationHandler();
+    
     private readonly IOutputHandler _outputHandler = new OutputHandler();
     private readonly IFileSystemHandler _fileSystemHandler = new FileSystemHandler();
     
@@ -17,6 +19,9 @@ public partial class MainPage : ContentPage
     public MainPage()
     {
         InitializeComponent();
+        
+        _configurationHandler.SetConfigurations();
+        LocalizationHandler.GetInstance().SwitchLanguage(_configurationHandler.GetConfiguration("language"));
 
         _commandManager = new CommandManager(_fileSystemHandler, _outputHandler);
 

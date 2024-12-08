@@ -31,7 +31,6 @@ public class LocalizationHandler : ILocalizationHandler
     public void SetUpResourceManager()
     {
         _resourceManager = new ResourceManager(_baseNamespace, typeof(LocalizationHandler).Assembly);
-        SwitchLanguage("en");
     }
 
     public void SwitchLanguage(string language)

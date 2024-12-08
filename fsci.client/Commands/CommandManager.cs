@@ -9,7 +9,6 @@ public class CommandManager
     public static Dictionary<string, string> AvailableCommands = new();
     
     private readonly string _fileName = "available_commands.ini";
-    private readonly IniFileReader _iniFileReader = new();
 
     private readonly IFileSystemHandler _fileSystemHandler;
     private readonly IOutputHandler _outputHandler;
@@ -20,7 +19,7 @@ public class CommandManager
         _fileSystemHandler = fileSystemHandler;
         _outputHandler = outputHandler;
         
-        AvailableCommands = _iniFileReader.ReadFile(_fileName);
+        AvailableCommands = IniFileManager.GetInstance().ReadResourceFile(_fileName);
     }
 
     public Command? CreateCommand(string acronym, string[] parameters)
