@@ -12,7 +12,7 @@ public abstract class Command
         _acronym = acronym;
     }
 
-    public abstract void Execute();
+    public abstract void Execute(string input);
     public abstract string GetSynopsis();
     public abstract string GetDescription();
 }

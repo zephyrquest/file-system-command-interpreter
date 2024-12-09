@@ -47,22 +47,25 @@ public class OutputHandler : IOutputHandler
         return commands;
     }
 
-    public void AddSuccessOperationMessage(IOperationSuccessOutputMessage command)
+    public void AddSuccessOperationMessage(IOperationSuccessOutputMessage command, string input)
     {
+        _output += $"{input}\n";
         _output += $"{command.GetOperationSuccessMessage()}\n";
         
         NotifyStateChange();
     }
     
-    public void AddUnSuccessOperationMessage(IOperationUnSuccessOutputMessage command)
+    public void AddUnSuccessOperationMessage(IOperationUnSuccessOutputMessage command, string input)
     {
+        _output += $"{input}\n";
         _output += $"{command.GetOperationUnSuccessMessage()}\n";
         
         NotifyStateChange();
     }
     
-    public void AddSyntaxErrorMessage(Command command)
+    public void AddSyntaxErrorMessage(Command command, string input)
     {
+        _output += $"{input}\n";
         _output += string.Format(LocalizationHandler.GetInstance().GetValue("command.syntaxerror"), 
             command.Acronym, command.GetSynopsis()) + "\n";
         

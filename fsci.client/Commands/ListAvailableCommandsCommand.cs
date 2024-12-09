@@ -17,7 +17,7 @@ public class ListAvailableCommandsCommand : Command, IOperateOnView, IOperationS
  {
  }
 
- public override void Execute()
+ public override void Execute(string input)
  {
   if (_outputHandler == null)
   {
@@ -26,7 +26,7 @@ public class ListAvailableCommandsCommand : Command, IOperateOnView, IOperationS
   
   _commands = _outputHandler.ListAvailableCommands();
   
-  _outputHandler.AddSuccessOperationMessage(this);
+  _outputHandler.AddSuccessOperationMessage(this, input);
  }
 
  public override string GetSynopsis()

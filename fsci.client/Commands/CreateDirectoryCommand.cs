@@ -19,7 +19,7 @@ public class CreateDirectoryCommand : Command, IParameterCommand, IOperateOnFile
  {
  }
 
- public override void Execute()
+ public override void Execute(string input)
  {
   if (_fileSystemHandler == null)
   {
@@ -35,11 +35,11 @@ public class CreateDirectoryCommand : Command, IParameterCommand, IOperateOnFile
 
   if (directory == null)
   {
-   _outputHandler.AddUnSuccessOperationMessage(this);
+   _outputHandler.AddUnSuccessOperationMessage(this, input);
   }
   else
   {
-   _outputHandler.AddSuccessOperationMessage(this);
+   _outputHandler.AddSuccessOperationMessage(this, input);
   }
  }
 

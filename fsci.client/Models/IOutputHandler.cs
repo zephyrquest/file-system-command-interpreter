@@ -9,9 +9,9 @@ public interface IOutputHandler
 
     void ClearOutput();
     List<Command> ListAvailableCommands();
-    void AddSuccessOperationMessage(IOperationSuccessOutputMessage command);
-    void AddUnSuccessOperationMessage(IOperationUnSuccessOutputMessage command);
-    void AddSyntaxErrorMessage(Command command);
+    void AddSuccessOperationMessage(IOperationSuccessOutputMessage command, string input);
+    void AddUnSuccessOperationMessage(IOperationUnSuccessOutputMessage command, string input);
+    void AddSyntaxErrorMessage(Command command, string input);
     void AddCommandNotFoundMessage(string acronym);
     void NotifyStateChange();
 }

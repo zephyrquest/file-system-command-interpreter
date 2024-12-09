@@ -22,7 +22,7 @@ public class CommandManager
         AvailableCommands = IniFileManager.GetInstance().ReadResourceFile(_fileName);
     }
 
-    public Command? CreateCommand(string acronym, string[] parameters)
+    public Command? CreateCommand(string acronym, string[] parameters, string input)
     {
         if (string.IsNullOrWhiteSpace(acronym))
         {
@@ -61,13 +61,13 @@ public class CommandManager
                 }
                 else
                 {
-                    _outputHandler.AddSyntaxErrorMessage(commandInstance);
+                    _outputHandler.AddSyntaxErrorMessage(commandInstance, input);
                     return null;
                 }
             }
             else if (parameters.Length > 0)
             {
-                _outputHandler.AddSyntaxErrorMessage(commandInstance);
+                _outputHandler.AddSyntaxErrorMessage(commandInstance, input);
                 return null;
             }
 

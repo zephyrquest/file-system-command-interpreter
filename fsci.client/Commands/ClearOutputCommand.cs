@@ -13,7 +13,7 @@ public class ClearOutputCommand : Command, IOperateOnView
  {
  }
 
- public override void Execute()
+ public override void Execute(string input)
  {
   if (_outputHandler == null)
   {

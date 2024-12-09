@@ -17,7 +17,7 @@ public class RemoveDirectoryCommand : Command, IParameterCommand, IOperateOnFile
     {
     }
 
-    public override void Execute()
+    public override void Execute(string input)
     {
         if (_fileSystemHandler == null)
         {
@@ -33,11 +33,11 @@ public class RemoveDirectoryCommand : Command, IParameterCommand, IOperateOnFile
 
         if (_absoluteDirectoryPath == null)
         {
-            _outputHandler.AddUnSuccessOperationMessage(this);
+            _outputHandler.AddUnSuccessOperationMessage(this, input);
         }
         else
         {
-            _outputHandler.AddSuccessOperationMessage(this);
+            _outputHandler.AddSuccessOperationMessage(this, input);
         }
     }
 

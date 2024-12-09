@@ -17,7 +17,7 @@ public class ChangeCurrentDirectoryCommand : Command, IParameterCommand, IOperat
     {
     }
 
-    public override void Execute()
+    public override void Execute(string input)
     {
         if (_fileSystemHandler == null)
         {
@@ -33,11 +33,11 @@ public class ChangeCurrentDirectoryCommand : Command, IParameterCommand, IOperat
 
         if (_directoryAbsolutePath == null)
         {
-            _outputHandler.AddUnSuccessOperationMessage(this);
+            _outputHandler.AddUnSuccessOperationMessage(this, input);
         }
         else
         {
-            _outputHandler.AddSuccessOperationMessage(this);
+            _outputHandler.AddSuccessOperationMessage(this, input);
         }
     }
 

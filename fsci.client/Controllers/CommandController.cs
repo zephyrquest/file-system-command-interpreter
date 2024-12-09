@@ -47,11 +47,11 @@ public class CommandController
             var commandAcronym = GetCommandAcronym(inputCommandParts);
             var arguments = GetCommandParameters(inputCommandParts);
             
-            var command = _commandManager.CreateCommand(commandAcronym, arguments);
+            var command = _commandManager.CreateCommand(commandAcronym, arguments, input);
 
             if (command != null)
             {
-                command.Execute();
+                command.Execute(commandInput);
             }
         }
         catch (Exception ex)

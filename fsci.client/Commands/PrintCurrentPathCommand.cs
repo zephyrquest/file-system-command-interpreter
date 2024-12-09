@@ -17,7 +17,7 @@ public class PrintCurrentPathCommand : Command, IOperateOnFileSystem, IOperateOn
  {
  }
 
- public override void Execute()
+ public override void Execute(string input)
  {
   if (_fileSystemHandler == null)
   {
@@ -31,7 +31,7 @@ public class PrintCurrentPathCommand : Command, IOperateOnFileSystem, IOperateOn
 
   _currentPath = _fileSystemHandler.PrintCurrentPath();
   
-  _outputHandler.AddSuccessOperationMessage(this);
+  _outputHandler.AddSuccessOperationMessage(this, input);
  }
 
  public override string GetSynopsis()

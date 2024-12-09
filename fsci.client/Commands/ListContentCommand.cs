@@ -20,7 +20,7 @@ public class ListContentCommand : Command, IOperateOnFileSystem, IOperateOnView,
     {
     }
 
-    public override void Execute()
+    public override void Execute(string input)
     {
         if (_fileSystemHandler == null)
         {
@@ -34,7 +34,7 @@ public class ListContentCommand : Command, IOperateOnFileSystem, IOperateOnView,
 
         _fileSystemElements = _fileSystemHandler.ListContent();
         
-        _outputHandler.AddSuccessOperationMessage(this);
+        _outputHandler.AddSuccessOperationMessage(this, input);
     }
 
     public override string GetSynopsis()

@@ -21,7 +21,7 @@ public class MoveDirectoryCommand : Command, IParameterCommand, IOperateOnFileSy
     {
     }
 
-    public override void Execute()
+    public override void Execute(string input)
     {
         if (_fileSystemHandler == null)
         {
@@ -37,14 +37,14 @@ public class MoveDirectoryCommand : Command, IParameterCommand, IOperateOnFileSy
 
         if (tuple == null)
         {
-            _outputHandler.AddUnSuccessOperationMessage(this);
+            _outputHandler.AddUnSuccessOperationMessage(this, input);
         }
         else
         {
             _originAbsolutePath = tuple.Value.Origin;
             _destinationAbsolutePath = tuple.Value.Destination;
             
-            _outputHandler.AddSuccessOperationMessage(this);
+            _outputHandler.AddSuccessOperationMessage(this, input);
         }
     }
 
