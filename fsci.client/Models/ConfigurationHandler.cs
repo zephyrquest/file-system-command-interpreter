@@ -43,7 +43,7 @@ public class ConfigurationHandler : IConfigurationHandler
         return File.Exists(_userConfigurationFileFullPath);
     }
 
-    public void SetConfigurations()
+    public void InitConfigurations()
     {
         if (!UserConfigurationFileExists())
         {
@@ -68,5 +68,22 @@ public class ConfigurationHandler : IConfigurationHandler
         }
 
         return value;
+    }
+
+    public void SetConfiguration(string key, string value)
+    {
+        if (_configurations == null)
+        {
+            throw new InvalidOperationException("The configurations have not been initialized.");
+        }
+
+        if (!_configurations.Keys.Contains(key))
+        {
+            throw new KeyNotFoundException($"The resource key '{key}' was not found."); 
+        }
+        
+        _configurations[key] = value;
+        
+        WriteUserConfigurationFile(_configurations);
     }
 }

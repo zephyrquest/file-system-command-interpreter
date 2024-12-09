@@ -14,19 +14,18 @@ public partial class MainPage : ContentPage
     private readonly CommandManager _commandManager;
     
     private readonly CommandController _commandController;
+    private readonly ConfigurationController _configurationController;
     
     
     public MainPage()
     {
         InitializeComponent();
         
-        _configurationHandler.SetConfigurations();
-        LocalizationHandler.GetInstance().SwitchLanguage(_configurationHandler.GetConfiguration("language"));
-
         _commandManager = new CommandManager(_fileSystemHandler, _outputHandler);
 
-        _commandController = new CommandController(CommandInputView, OutputAreaView, 
-            _outputHandler, 
+        _configurationController = new ConfigurationController(ConfigurationView, _configurationHandler);
+        _commandController = new CommandController(CommandInputView, OutputAreaView,
+            _outputHandler,
             _commandManager);
     }
 }

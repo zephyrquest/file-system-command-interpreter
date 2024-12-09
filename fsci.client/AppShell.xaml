@@ -8,7 +8,6 @@
     Title="fsci">
 
     <ShellContent
-        Title="File System Command Interpreter"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
 </Shell>

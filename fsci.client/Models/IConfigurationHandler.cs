@@ -6,6 +6,7 @@ public interface IConfigurationHandler
     void CreateUserConfigurationFile();
     void WriteUserConfigurationFile(Dictionary<string, string> content);
     bool UserConfigurationFileExists();
-    void SetConfigurations();
+    void InitConfigurations();
     string GetConfiguration(string key);
+    void SetConfiguration(string key, string value);
 }

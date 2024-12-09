@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="fsci.client.Views.ConfigurationView">
+    
+    <Grid ColumnDefinitions="Auto, *">
+        <!-- App Title -->
+        <Label Text="File System Command Interpreter"
+               FontSize="24"
+               FontAttributes="Bold"
+               VerticalOptions="Center"
+               HorizontalOptions="Start" />
+
+        <!-- Language Selector -->
+        <Picker x:Name="LanguagePicker"
+                Title="Language"
+                HorizontalOptions="End"
+                WidthRequest="150"
+                VerticalOptions="Center"
+                Grid.Column="1">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>en</x:String>
+                    <x:String>it</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+    </Grid>
+</ContentView>

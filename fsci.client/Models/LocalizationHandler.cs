@@ -5,7 +5,7 @@ namespace fsci.client.Models;
 
 public class LocalizationHandler : ILocalizationHandler
 {
-    private static LocalizationHandler? _localizationHandler;
+    private static ILocalizationHandler? _localizationHandler;
     
     private readonly string _baseNamespace = "fsci.client.Resources.TranslatedText.Text";
 
@@ -17,7 +17,7 @@ public class LocalizationHandler : ILocalizationHandler
         
     }
 
-    public static LocalizationHandler GetInstance()
+    public static ILocalizationHandler GetInstance()
     {
         if (_localizationHandler == null)
         {
