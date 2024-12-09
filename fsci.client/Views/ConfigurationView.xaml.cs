@@ -3,14 +3,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using fsci.client.Models;
+using fsci.client.Observers;
 
 namespace fsci.client.Views;
 
-public partial class ConfigurationView : ContentView, IConfigurationView
+public partial class ConfigurationView : ContentView, IConfigurationView, ILanguageObserver
 {
+    private string _titleLabel;
+    private string _languageLabel;
+
+    public string TitleLabel
+    {
+        get => _titleLabel;
+        set
+        {
+            _titleLabel = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public string LanguageLabel
+    {
+        get => _languageLabel;
+        set
+        {
+            _languageLabel = value;
+            OnPropertyChanged();
+        }
+    }
+
     public ConfigurationView()
     {
         InitializeComponent();
+        BindingContext = this;
     }
     
     public void SetLanguage(string languageCode)
@@ -41,5 +67,11 @@ public partial class ConfigurationView : ContentView, IConfigurationView
                 languageSelected?.Invoke(selectedLanguage);
             }
         };
+    }
+
+    public void Translate()
+    {
+        TitleLabel = LocalizationHandler.GetInstance().GetValue("ui.title");
+        LanguageLabel = LocalizationHandler.GetInstance().GetValue("ui.language");
     }
 }

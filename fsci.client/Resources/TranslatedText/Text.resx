@@ -26,6 +26,12 @@
     <data name="ui.command" xml:space="preserve">
         <value>Command</value>
     </data>
+    <data name="ui.language" xml:space="preserve">
+        <value>Language</value>
+    </data>
+    <data name="ui.enter_command" xml:space="preserve">
+        <value>Enter your command here</value>
+    </data>
 
     <data name="command.help.synopsis" xml:space="preserve">
         <value>help</value>

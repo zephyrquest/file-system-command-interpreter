@@ -6,7 +6,7 @@
     
     <Grid ColumnDefinitions="Auto, *">
         <!-- App Title -->
-        <Label Text="File System Command Interpreter"
+        <Label Text="{Binding TitleLabel}"
                FontSize="24"
                FontAttributes="Bold"
                VerticalOptions="Center"
@@ -14,7 +14,7 @@
 
         <!-- Language Selector -->
         <Picker x:Name="LanguagePicker"
-                Title="Language"
+                Title="{Binding LanguageLabel}"
                 HorizontalOptions="End"
                 WidthRequest="150"
                 VerticalOptions="Center"

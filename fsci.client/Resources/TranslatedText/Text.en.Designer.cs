@@ -312,6 +312,24 @@ namespace fsci.client.Resources.TranslatedText {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter your command here.
+        /// </summary>
+        internal static string ui_enter_command {
+            get {
+                return ResourceManager.GetString("ui.enter_command", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        internal static string ui_language {
+            get {
+                return ResourceManager.GetString("ui.language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File System Command Interpreter.
         /// </summary>
         internal static string ui_title {

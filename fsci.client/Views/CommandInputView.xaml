@@ -6,13 +6,13 @@
     
     <Grid ColumnDefinitions="Auto, *">
         <!-- Label -->
-        <Label Text="Command:" 
+        <Label Text="{Binding CommandLabel, StringFormat='{}{0}:'}" 
                VerticalOptions="Center" 
                HorizontalOptions="Start" 
                Grid.Column="0" />
         <!-- Entry -->
         <Entry x:Name="CommandInput" 
-               Placeholder="Enter your command here" 
+               Placeholder="{Binding EnterCommandPlaceholder}" 
                VerticalOptions="Center" 
                HorizontalOptions="FillAndExpand" 
                Grid.Column="1" />
